@@ -34,7 +34,7 @@ public class UniLinksPlugin
 
     private void handleIntent(Context context, Intent intent) {
         String action = intent.getAction();
-        String dataString = intent.getDataString();
+        String dataString = intent.getDataString() + "flag=" + intent.getFlags();
 
         if (Intent.ACTION_VIEW.equals(action)) {
             if (initialIntent) {
@@ -60,7 +60,7 @@ public class UniLinksPlugin
                 if (dataString == null) {
                     events.error("UNAVAILABLE", "Link unavailable", null);
                 } else {
-                    events.success(dataString);
+                    events.success(dataString + "flag=" + intent.getFlags());
                 }
             }
         };
